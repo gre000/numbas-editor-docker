@@ -1,0 +1,32 @@
+# Use postgres/example user/password credentials
+version: '3.1'
+
+services:
+
+  db:
+    image: postgres:11
+    restart: always
+    networks:
+      numbas-net:
+        aliases:
+          - postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: 11example11
+
+  numbas:
+    image: numbas:152209
+    restart: always
+    networks:
+      - numbas-net
+    ports:
+      - 8080:80
+      - 8000:8000
+
+volumes:
+  pgdata:
+
+networks:
+  numbas-net:
+
