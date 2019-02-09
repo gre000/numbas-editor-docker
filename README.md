@@ -11,8 +11,8 @@ Now you can run your local or cloud instance of Numbas in several minutes.
   - please be sure you don't use default PostgreSQL password
 
 * Migrations (on empty db)
- - should be patched editor/migrations/0014_version_2_data_migration.py
- - comment out 458-470
- - python manage.py migrate
+  - should be patched editor/migrations/0014_version_2_data_migration.py
+  - comment out 458-470
+  - python manage.py migrate
 
 
