@@ -11,11 +11,14 @@ import sys
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'b!8no(e9*1*q9f&!7c&u^z$vedf!5sor-igsz_pe1*@5(=t^e@'
+try:
+    with open('/var/run/secrets/numbas_editor') as f:
+        SECRET_KEY = f.read()
+except FileNotFoundError:
+    SECRET_KEY = os.environ.get('SECRET_KEY','secret')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get('DEBUG',False)
 
 ALLOWED_HOSTS = ['*']
 
@@ -83,12 +86,19 @@ SITE_ID = 1
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
+try:
+    with open('/var/run/secrets/postgres_password') as f:
+        postgres_password = f.read().strip()
+except FileNotFoundError:
+    postgres_password = os.environ.get('POSTGRES_PASSWORD','postgrs')
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'numbas',
+        'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': '11example11',
+        'PASSWORD': postgres_password,
         'HOST': 'postgres',
         'PORT': '',
     }
