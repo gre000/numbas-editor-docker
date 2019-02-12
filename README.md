@@ -22,13 +22,15 @@ echo "postgrespass" | docker secret create postgres_password -
 
 (Remember to change the passwords!)
 
-Run:
+You only need to do this once.
+
+Build the Numbas Docker image:
 
 ```
 docker build --tag=numbas .
 ```
 
-to build the Numbas Docker image.
+You only need to do this once.
 
 Then, start it up with:
 
