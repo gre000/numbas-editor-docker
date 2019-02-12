@@ -16,7 +16,7 @@ Run the following, after changing the passwords:
 
 ```
 python -c 'from string import ascii_letters as chars; import random; result = "".join([random.choice(chars) for i in range(50)]); print(result)' | docker secret create numbas_editor -
-echo "adminpass" | docker secret create numbas_admin_password
+echo "adminpass" | docker secret create numbas_admin_password -
 echo "postgrespass" | docker secret create postgres_password -
 ```
 
