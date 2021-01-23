@@ -1,8 +1,6 @@
 # Use postgres/example user/password credentials
-version: '3.1'
-
+version: "3.1"
 services:
-
   db:
     image: postgres:11
     restart: always
@@ -11,7 +9,8 @@ services:
         aliases:
           - postgres
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - ./data/postgres-passport:/docker-entrypoint-initdb.d
+      - ./data/postgres_passport_data:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
     secrets:
@@ -23,26 +22,25 @@ services:
     networks:
       - numbas-net
     ports:
-      - 8080:80
+      - 7784:80
+    volumes:
+      - data/numbas:/srv/numbas
     environment:
       ADMIN_USERNAME: admin
-      ADMIN_EMAIL: admin@admin.com
+      ADMIN_EMAIL: admin@learnhopper.de
     entrypoint: /entrypoint.sh
     secrets:
       - numbas_editor
       - postgres_password
       - numbas_admin_password
 
-volumes:
-  pgdata:
-
 networks:
   numbas-net:
 
 secrets:
   numbas_editor:
-    external: true
+    file: ./numbas_editor
   numbas_admin_password:
-    external: true
+    file: ./numbas_admin_password
   postgres_password:
-    external: true
+    file: ./postgres_password

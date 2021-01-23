@@ -144,7 +144,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = '/srv/numbas/static/'
 
-SITE_TITLE = 'Numbas'
+SITE_TITLE = 'Quizhopper'
 
 MATHJAX_URL = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0'
 
@@ -186,4 +186,4 @@ sys.path.append(os.path.join(GLOBAL_SETTINGS['NUMBAS_PATH'],'bin'))
 SANITIZER_ALLOWED_TAGS = ['a', 'p', 'img','br','strong','em','div','code','i','b', 'ul', 'ol', 'li', 'table','thead','tbody','td','th','tr']
 SANITIZER_ALLOWED_ATTRIBUTES = ['href','title']
 
-DEFAULT_FROM_EMAIL = ''
+DEFAULT_FROM_EMAIL = 'admin@quizhopper.de'
