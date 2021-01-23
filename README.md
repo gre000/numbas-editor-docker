@@ -38,7 +38,7 @@ Then, start it up with:
 docker-compose up -d
 ```
 
-If everything goes well, the Numbas editor will be available at http://localhost:8080.
+If everything goes well, the Numbas editor will be available at http://localhost:7784.
 You can log in with the username `admin` and the password you saved under the secret `numbas_admin_password`.
 
 If things don't work, you can look at which containers are running with `docker ps -a`, and see the output of a container with `docker logs $CONTAINER_ID`.
